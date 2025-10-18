@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Juros Simples</title>
+  
+  <link rel="stylesheet" href="calculadora.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="logo"><span>Invest</span>Fácil</div>
+    <div class="header-buttons">
+      <a href="index.html" class="carteira-btn">↪ Voltar</a>
+      <img src="poze.jpg" alt="user" width="40" height="40" style="border-radius: 50%;">
+    </div>
+  </header>
+
+  <main>
+    <div class="simulador juros-simples">
+      <h1>Simulador de Juros Simples</h1>
+      <div class="linha"></div>
+
+      <div class="grid">
+        <div>
+          <label>Valor Inicial</label>
+          <div class="input-group">
+            <span>R$</span>
+            <input type="number" id="valorInicial" value="1000" />
+          </div>
+        </div>
+        <div>
+          <label>Taxa de Juros</label>
+          <div class="input-group">
+            <span>%</span>
+            <input type="number" id="taxaJuros" value="8" />
+            <select id="tipoTaxa">
+              <option value="anual">Anual</option>
+              <option value="mensal">Mensal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>Período</label>
+          <div class="input-group">
+            <input type="number" id="periodo" value="10" />
+            <select id="tipoPeriodo">
+              <option value="anos">Anos</option>
+              <option value="meses">Meses</option>
+            </select>
+          </div>
+        </div>
+        </div>
+
+      <div class="botoes">
+        <button class="limpar" onclick="limparCampos()">Limpar</button>
+        <button class="calcular" onclick="calcular()">Calcular</button>
+      </div>
+
+      <div class="resultados">
+        <div class="resultado">
+          <h3>Valor Investido</h3>
+          <p id="valorInvestido">R$ 0,00</p>
+        </div>
+        <div class="resultado">
+          <h3>Total em Juros</h3>
+          <p class="verde" id="totalJuros">R$ 0,00</p>
+        </div>
+        <div class="resultado">
+          <h3>Valor Final</h3>
+          <p class="azul" id="valorFinal">R$ 0,00</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function calcular() {
+      // 1. Obter os valores (sem aporte)
+      const valorInicial = parseFloat(document.getElementById('valorInicial').value) || 0;
+      const taxa = parseFloat(document.getElementById('taxaJuros').value) || 0;
+      const tipoTaxa = document.getElementById('tipoTaxa').value;
+      const periodo = parseFloat(document.getElementById('periodo').value) || 0;
+      const tipoPeriodo = document.getElementById('tipoPeriodo').value;
+
+      // 2. Padronizar taxa e período para base MENSAL
+      // Em juros simples, a taxa anual é simplesmente dividida por 12
+      const taxaMensal = tipoTaxa === 'anual' ? (taxa / 100) / 12 : (taxa / 100);
+      const meses = tipoPeriodo === 'anos' ? periodo * 12 : periodo;
+
+      // 3. Calcular Juros Simples (J = P * i * n)
+      const juros = valorInicial * taxaMensal * meses;
+
+      // 4. Calcular os totais (sem aporte)
+      const valorInvestido = valorInicial;
+      const valorFinal = valorInicial + juros;
+
+      // 5. Exibir os resultados
+      document.getElementById('valorInvestido').innerText = formatar(valorInvestido);
+      document.getElementById('totalJuros').innerText = formatar(juros);
+      document.getElementById('valorFinal').innerText = formatar(valorFinal);
+    }
+
+    // FUNÇÃO DE FORMATAR (ESTAVA FALTANDO)
+    function formatar(valor) {
+      if (isNaN(valor)) {
+        return 'R$ 0,00';
+      }
+      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    // FUNÇÃO DE LIMPAR (CORRIGIDA)
+    function limparCampos() {
+      document.getElementById('valorInicial').value = '';
+      document.getElementById('taxaJuros').value = '';
+      document.getElementById('periodo').value = '';
+      // Linha do 'aporteMensal' removida
+      document.getElementById('valorInvestido').innerText = 'R$ 0,00';
+      document.getElementById('totalJuros').innerText = 'R$ 0,00';
+      document.getElementById('valorFinal').innerText = 'R$ 0,00';
+    }
+    
+    // Calcula uma vez ao carregar a página (com os valores padrão)
+    calcular();
+  </script>
+
+</body>
+</html>

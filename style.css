@@ -1,0 +1,349 @@
+/* ===================================================================
+   1. ESTILOS GLOBAIS E VARIÁVEIS (Paleta: Roxo/Indigo - LIGHT MODE)
+   =================================================================== */
+:root {
+    --color-primary: #453bff;      /* Roxo/Indigo */
+    --color-dark-bg: #222831;     /* Cinza-carvão */
+    --color-dark-text: #1A1A1A;     /* Texto (preto) */
+    --color-muted-text: #6c757d;  /* Cinza padrão */
+    --color-light-text: #CED4DA;  /* Texto no header/footer (claro) */
+    --color-white: #ffffff;       /* Fundo dos cards (branco) */
+    --color-body-bg: #F8F9FA;     /* Fundo da página (cinza claro) */
+    --color-border: #DEE2E6;     /* Borda clara */
+    --color-border-light: #F1F3F5; /* Borda super leve */
+    --color-dark-border: #3a4a6e;  /* Borda escura */
+    --color-green: #20C997;       /* Verde */
+    --color-red: #F03E3E;         /* Vermelho */
+    
+    --font-main: 'Poppins', sans-serif;
+    
+    --border-radius-s: 8px;
+    --border-radius-m: 12px;
+    --border-radius-l: 20px;
+    
+    --shadow: 0 4px 15px rgba(0,0,0,0.08);
+    --transition: all 0.2s ease-in-out;
+    
+    --container-width: 1200px;
+}
+
+/* ===================================================================
+   Paleta do DARK MODE (SELETOR CORRIGIDO)
+   =================================================================== */
+html.dark-mode { /* <--- ESTE É O SELETOR CORRETO */
+    --color-dark-text: #F1F3F5;      /* Texto (claro) */
+    --color-muted-text: #9a9a9a;     /* Muted (claro) */
+    --color-white: #222831;         /* Fundo dos cards (cinza-carvão) */
+    --color-body-bg: #1A1D23;       /* Fundo da página (preto) */
+    --color-border: #3a4a6e;        /* Borda (escura) */
+    --color-border-light: #2C3440;  /* Borda (menos escura) */
+}
+
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--color-body-bg);
+    color: var(--color-dark-text);
+    padding-top: 72px; 
+    transition: background-color 0.2s, color 0.2s; 
+}
+
+a {
+    transition: var(--transition);
+}
+
+ul {
+    list-style: none;
+}
+
+button {
+    font-family: var(--font-main);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+/* ===================================================================
+   2. LAYOUT: CABEÇALHO FIXO
+   =================================================================== */
+.main-header {
+    background-color: var(--color-white);
+    border-bottom: 1px solid var(--color-border);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+.logo { font-size: 26px; font-weight: 700; text-decoration: none; color: var(--color-primary); }
+.main-header .logo span { color: var(--color-dark-text); }
+
+/* --- CSS do Menu de Navegação --- */
+.header-left { display: flex; align-items: center; gap: 40px; }
+.main-nav ul { display: flex; list-style: none; gap: 25px; }
+.main-nav a { text-decoration: none; color: var(--color-muted-text); font-weight: 500; font-size: 16px; padding-bottom: 5px; border-bottom: 2px solid transparent; }
+.main-nav a:hover, .main-nav a.active { color: var(--color-primary); border-bottom-color: var(--color-primary); }
+
+.action-buttons { display: flex; align-items: center; gap: 15px; }
+.btn-carteira { display: flex; align-items: center; gap: 8px; background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); padding: 8px 16px; font-size: 16px; font-weight: 600; text-decoration: none; color: var(--color-dark-text); }
+.btn-carteira:hover { border-color: var(--color-primary); }
+.btn-carteira .fa-wallet { font-size: 14px; }
+.user-profile { display: flex; align-items: center; border: 1px solid var(--color-border); border-radius: 50px; padding: 5px; cursor: pointer; }
+.user-profile:hover { border-color: var(--color-primary); }
+.avatar-image { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+
+/* --- Estilo do Botão de Tema --- */
+.btn-theme {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    color: var(--color-muted-text);
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0; /* Remove padding extra */
+}
+.btn-theme:hover {
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-theme .fa-sun { display: none; } 
+.btn-theme .fa-moon { display: block; } 
+
+html.dark-mode .btn-theme .fa-sun { display: block; } 
+html.dark-mode .btn-theme .fa-moon { display: none; } 
+
+
+/* ===================================================================
+   3. SEÇÕES DA PÁGINA (Com transição de cor)
+   =================================================================== */
+
+.ranking-card, .ibovespa-container, .cotacao-card, .tool-card, .news-card, .portfolio-container {
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* --- 3.1 CSS DO TICKER --- */
+.stock-ticker-bar {
+    background-color: var(--color-dark-bg);
+    padding: 10px 0;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    border-bottom: 2px solid var(--color-primary);
+    transition: background-color 0.2s;
+}
+.ticker-list { display: flex; animation: scroll-left 40s linear infinite; }
+.ticker-item { display: flex; align-items: center; padding: 0 25px; font-size: 14px; white-space: nowrap; flex-shrink: 0; border-right: 1px solid rgba(255, 255, 255, 0.1); }
+.ticker-item span { margin-right: 8px; }
+.ticker-symbol { font-weight: 600; color: var(--color-light-text); } /* CORRIGIDO */
+.ticker-price { color: var(--color-light-text); }
+.ticker-change.positive { color: var(--color-green); }
+.ticker-change.negative { color: var(--color-red); }
+.ticker-change.neutral { color: var(--color-muted-text); }
+@keyframes scroll-left { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* --- 3.2 CSS DA SEÇÃO DE RANKINGS --- */
+.rankings-section { padding: 25px 30px; }
+.rankings-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 30px; gap: 15px; }
+.rankings-header h1 { font-size: 28px; color: var(--color-dark-text); margin: 0; }
+.filter-buttons button { font-family: var(--font-main); font-size: 14px; font-weight: 500; padding: 8px 16px; border: 1px solid var(--color-border); border-radius: var(--border-radius-l); background-color: var(--color-body-bg); color: var(--color-muted-text); cursor: pointer; margin-left: 10px; }
+.filter-buttons button.active, .filter-buttons button:hover { background-color: var(--color-dark-bg); color: var(--color-white); border-color: var(--color-dark-bg); }
+.rankings-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+.ranking-card { background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--border-radius-m); padding: 20px; flex: 1; min-width: 320px; max-width: 380px; }
+.ranking-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.card-header { text-align: center; margin-bottom: 20px; }
+.card-header .icon { font-size: 24px; color: var(--color-primary); }
+.card-header h2 { margin: 10px 0 0; font-size: 18px; color: var(--color-dark-text); }
+.ranking-item { display: flex; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--color-border-light); }
+.ranking-item:last-child { border-bottom: none; }
+.rank { font-size: 14px; font-weight: 600; color: var(--color-primary); width: 40px; }
+.asset-logo { width: 32px; height: 32px; border-radius: 50%; margin-right: 12px; }
+.asset-info { flex-grow: 1; }
+.asset-info .ticker { font-weight: 600; color: var(--color-dark-text); font-size: 15px; }
+.asset-info .name { font-size: 12px; color: var(--color-muted-text); }
+.value { font-size: 15px; font-weight: 600; color: var(--color-dark-text); }
+.icon-arrow { color: var(--color-muted-text); font-size: 12px; margin-left: 15px; }
+
+/* --- 3.3 CSS DA SEÇÃO IBOVESPA --- */
+.ibovespa-section { padding: 20px 30px; }
+.ibovespa-container { background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--border-radius-m); padding: 25px; display: flex; flex-wrap: wrap; gap: 30px; }
+.chart-column { flex: 1.5; min-width: 400px; }
+.chart-header { display: flex; justify-content: space-between; align-items: flex-start; }
+.chart-header > div:last-child { display: flex; align-items: baseline; gap: 8px; flex-wrap: nowrap; }
+.chart-header .title { font-size: 24px; font-weight: 600; color: var(--color-dark-text); }
+.chart-header .points { font-size: 28px; font-weight: 600; color: var(--color-dark-text); }
+.chart-header .change { font-size: 16px; font-weight: 600; color: var(--color-dark-text); }
+.chart-details { font-size: 12px; color: var(--color-muted-text); margin-top: 5px; }
+.time-filters { margin: 20px 0; display: flex; gap: 5px; flex-wrap: wrap; }
+.time-filters button { font-size: 12px; padding: 6px 12px; border: 1px solid var(--color-border); border-radius: 6px; background-color: var(--color-body-bg); color: var(--color-muted-text); cursor: pointer; } /* Adicionado color */
+.time-filters button.active, .time-filters button:hover { background-color: var(--color-dark-bg); color: var(--color-white); border-color: var(--color-dark-bg); }
+.update-time { font-size: 12px; color: var(--color-muted-text); margin-top: 15px; display: flex; align-items: center; }
+.update-time .fa-info-circle { margin-right: 5px; }
+.chart-container { position: relative; width: 100%; height: 250px; }
+.list-column { flex: 1; min-width: 300px; }
+.list-header { display: flex; align-items: center; font-size: 18px; font-weight: 600; color: var(--color-dark-text); margin-bottom: 10px; }
+.list-header .fa-caret-up { color: var(--color-green); margin-left: 8px; }
+.list-header .fa-caret-down { color: var(--color-red); margin-left: 8px; }
+.stock-list .stock-item { display: flex; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--color-border-light); }
+.stock-item .logo { width: 24px; height: 24px; border-radius: 50%; margin-right: 10px; }
+.stock-item .ticker { font-weight: 600; color: var(--color-dark-text); flex-grow: 1; }
+.stock-item .percentage { font-weight: 600; width: 70px; text-align: right; margin-right: 15px; }
+.stock-item .price { font-weight: 600; color: var(--color-dark-text); width: 70px; text-align: right; }
+.percentage.positive { color: var(--color-green); }
+.percentage.negative { color: var(--color-red); }
+
+/* --- 3.4 CSS DA SEÇÃO DE COTAÇÕES --- */
+.cotacoes-section { padding: 20px 30px 40px 30px; }
+.cotacoes-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+.cotacao-card { background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--border-radius-m); padding: 20px; flex: 1; min-width: 300px; max-width: 380px; }
+.cotacao-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.cotacao-card h2 { font-size: 22px; margin-top: 0; margin-bottom: 20px; color: var(--color-dark-text); }
+.cotacao-header, .cotacao-row { display: flex; justify-content: space-between; font-size: 14px; padding: 10px 5px; }
+.cotacao-header { color: var(--color-muted-text); border-bottom: 1px solid var(--color-border-light); font-weight: 500; }
+.cotacao-row { color: var(--color-dark-text); font-weight: 500; }
+.crypto-header div, .crypto-row div { flex: 1; text-align: left; }
+.crypto-header div:last-child, .crypto-row div:last-child { text-align: right; }
+.crypto-row .name { display: flex; align-items: center; }
+.crypto-row .crypto-icon { font-size: 20px; margin-right: 10px; }
+.crypto-row .variation.negative { color: var(--color-red); }
+.fa-bitcoin { color: #f7931a; }
+.fa-ethereum { color: #627eea; }
+
+/* --- 3.5 CSS DA SEÇÃO MERCADO INTERNACIONAL --- */
+.internacional-section { padding: 20px 30px 40px 30px; }
+.internacional-header { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 30px; }
+.internacional-header .flag-icon { width: 32px; height: 32px; border-radius: 50%; }
+.internacional-header h2 { font-size: 28px; color: var(--color-dark-text); margin: 0; }
+.internacional-container { display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; }
+.mercado-card { background-color: var(--color-dark-bg); color: var(--color-light-text); border-radius: var(--border-radius-m); padding: 20px; flex: 1; min-width: 300px; max-width: 380px; } /* CORRIGIDO */
+.mercado-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; padding-bottom: 15px; border-bottom: 1px solid var(--color-dark-border); }
+.mercado-card-header .icon { font-size: 20px; }
+.mercado-card-header h3 { margin: 0; font-size: 18px; }
+.mercado-list-item { display: flex; align-items: center; padding: 10px 0; }
+.mercado-rank { font-size: 12px; font-weight: 600; width: 24px; height: 24px; border-radius: 6px; display: flex; align-items: center; justify-content: center; margin-right: 12px; color: var(--color-white); } /* Cor OK */
+.rank-1 { background-color: var(--color-green); }
+.rank-2 { background-color: #2196F3; }
+.rank-3 { background-color: #ff9800; }
+.rank-4 { background-color: #9c27b0; }
+.rank-5 { background-color: #607d8b; }
+.mercado-logo { width: 32px; height: 32px; border-radius: 50%; margin-right: 12px; }
+.mercado-info { flex-grow: 1; }
+.mercado-info .ticker { font-weight: 600; font-size: 15px; }
+.mercado-info .name { font-size: 12px; color: var(--color-light-text); }
+.mercado-value { font-size: 15px; font-weight: 500; }
+.mercado-arrow { color: var(--color-muted-text); font-size: 12px; margin-left: 15px; }
+
+/* --- 3.6 CSS DA SEÇÃO DE FERRAMENTAS DE DIVIDENDOS --- */
+.dividends-section { padding: 40px 30px; background-color: var(--color-body-bg); }
+.dividends-container { max-width: var(--container-width); margin: 0 auto; text-align: center; }
+.dividends-container h2 { font-size: 28px; color: var(--color-dark-text); margin-top: 0; margin-bottom: 10px; }
+.dividends-container p { font-size: 16px; color: var(--color-muted-text); margin-top: 0; margin-bottom: 40px; }
+.tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+.tool-card { background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--border-radius-m); padding: 25px; text-align: left; text-decoration: none; color: inherit; }
+.tool-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); }
+.tool-card .tool-icon { font-size: 24px; color: var(--color-white); background-color: var(--color-primary); width: 50px; height: 50px; border-radius: var(--border-radius-s); display: flex; align-items: center; justify-content: center; margin-bottom: 20px; }
+.tool-card h3 { font-size: 20px; color: var(--color-dark-text); margin: 0 0 10px 0; }
+.tool-card .tool-description { font-size: 14px; color: var(--color-muted-text); line-height: 1.6; }
+
+/* --- 3.7 CSS DA SEÇÃO DE NOTÍCIAS --- */
+.news-section { padding: 20px 30px 40px 30px; max-width: var(--container-width); margin: 0 auto; }
+.news-section h2 { font-size: 28px; color: var(--color-dark-text); margin-bottom: 30px; }
+.news-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+.news-card { display: flex; background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--border-radius-m); overflow: hidden; text-decoration: none; color: inherit; }
+.news-card:hover { box-shadow: var(--shadow); transform: translateY(-5px); }
+.news-card .news-thumbnail { width: 130px; flex-shrink: 0; object-fit: cover; }
+.news-card .news-content { padding: 15px; }
+.news-card .news-category { display: inline-block; background-color: var(--color-border-light); color: var(--color-muted-text); padding: 4px 10px; border-radius: var(--border-radius-l); font-size: 12px; font-weight: 500; margin-bottom: 10px; }
+.news-card .news-headline { font-size: 15px; font-weight: 600; line-height: 1.4; color: var(--color-dark-text); margin: 0; }
+
+/* --- 3.8 CSS DO GERENCIADOR DE CARTEIRAS --- */
+.portfolio-section { padding: 20px 30px 40px 30px; background-color: var(--color-body-bg); }
+.portfolio-container { max-width: var(--container-width); margin: 0 auto; background-color: var(--color-white); border: 1px solid var(--color-border); border-radius: var(--border-radius-m); padding: 25px; }
+.portfolio-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--color-border-light); gap: 15px; }
+.portfolio-header h2 { font-size: 28px; color: var(--color-dark-text); margin: 0; }
+.btn-create-portfolio { background-color: var(--color-dark-bg); color: var(--color-white); border: none; border-radius: var(--border-radius-s); padding: 10px 20px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; }
+.btn-create-portfolio:hover { background-color: var(--color-primary); }
+.portfolio-body { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+.stats-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+.stat-card { background-color: var(--color-body-bg); border: 1px solid var(--color-border); border-radius: var(--border-radius-s); padding: 20px; }
+.stat-card .stat-header { display: flex; align-items: center; gap: 10px; color: var(--color-muted-text); font-size: 14px; margin-bottom: 8px; }
+.stat-card .stat-value { font-size: 24px; font-weight: 600; color: var(--color-dark-text); }
+.stat-card .stat-rentabilidade { font-size: 24px; font-weight: 600; color: var(--color-green); }
+.chart-area { display: flex; flex-direction: column; }
+.chart-area h3 { font-size: 22px; color: var(--color-dark-text); margin-top: 0; margin-bottom: 20px; text-align: center; }
+.chart-content { display: flex; align-items: center; gap: 30px; }
+.chart-canvas-container { position: relative; width: 200px; height: 200px; flex-shrink: 0; }
+.chart-legend { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 15px; width: 100%; }
+.chart-legend li { display: flex; align-items: center; justify-content: space-between; font-size: 14px; }
+.legend-info { display: flex; align-items: center; }
+.legend-swatch { width: 14px; height: 14px; border-radius: 4px; margin-right: 10px; flex-shrink: 0; }
+.legend-percentage { font-weight: 600; color: var(--color-dark-text); }
+
+/* --- Estilo para Cards de Link (Simuladores) --- */
+.cotacao-card.cotacao-link-card { display: block; text-decoration: none; color: var(--color-dark-text); border-radius: 16px; padding: 30px; }
+.cotacao-link-card .cotacao-link-header { display: block; margin-bottom: 20px; color: var(--color-primary); }
+.cotacao-link-card .cotacao-link-header i { font-size: 24px; margin-bottom: 15px; display: block; }
+.cotacao-link-card .cotacao-link-header h2 { font-size: 20px; font-weight: 600; color: var(--color-primary); margin: 0; }
+.cotacao-link-card p { font-size: 15px; color: var(--color-muted-text); line-height: 1.6; margin: 0; }
+
+/* ===================================================================
+   4. LAYOUT: RODAPÉ
+   =================================================================== */
+.main-footer {
+    background-color: var(--color-dark-bg);
+    color: var(--color-light-text);
+    padding: 40px 30px;
+    border-top: 3px solid var(--color-primary);
+    transition: background-color 0.2s;
+}
+.footer-container { max-width: var(--container-width); margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 40px; }
+.footer-column { flex: 1; min-width: 200px; }
+.footer-about .footer-logo { font-size: 32px; font-weight: 700; text-decoration: none; color: var(--color-primary); display: block; margin-bottom: 10px; }
+.footer-about .footer-logo span { color: #FFFFFF; } /* CORRIGIDO */
+.footer-about .footer-slogan { font-size: 14px; line-height: 1.6; color: var(--color-light-text); margin: 0; }
+.footer-column h3 { font-size: 18px; color: #FFFFFF; margin-top: 0; margin-bottom: 20px; font-weight: 600; } /* CORRIGIDO */.footer-column ul a { color: var(--color-light-text); text-decoration: none; font-size: 14px; }
+.footer-column ul li { margin-bottom: 12px; }
+.footer-column ul a:hover { color: var(--color-white); padding-left: 5px; } /* Ajustado */
+.social-links { display: flex; gap: 15px; }
+.social-links a { color: #FFFFFF; font-size: 18px; background-color: var(--color-dark-border); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; } /* CORRIGIDO */.social-links a:hover { background-color: var(--color-primary); transform: translateY(-3px); }
+.footer-bottom { max-width: var(--container-width); margin: 40px auto 0 auto; padding-top: 20px; border-top: 1px solid var(--color-dark-border); text-align: center; font-size: 12px; color: var(--color-muted-text); }
+
+/* ===================================================================
+   5. MEDIA QUERIES (RESPONSIVIDADE)
+   =================================================================== */
+@media (max-width: 900px) {
+    .portfolio-body { grid-template-columns: 1fr; }
+    .chart-content { flex-direction: column; }
+    .chart-legend { width: 100%; max-width: 300px; }
+}
+@media (max-width: 768px) {
+    .main-header { padding: 10px 15px; }
+    .logo { font-size: 22px; }
+    .header-left { gap: 15px; }
+    .main-nav { display: none; }
+    .btn-carteira span { display: none; }
+    .btn-carteira { padding: 8px 10px; }
+    .chart-column { min-width: 100%; }
+    .stats-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+    .rankings-header { flex-direction: column; gap: 15px; align-items: flex-start; }
+    .filter-buttons { margin-left: 0; }
+    .chart-header { flex-direction: column; align-items: flex-start; gap: 5px; }
+    .chart-header .points { font-size: 24px; }
+    .footer-container { flex-direction: column; }
+}

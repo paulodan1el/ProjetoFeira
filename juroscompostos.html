@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Juros...</title>
+  
+  <link rel="stylesheet" href="calculadora.css">
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <header>
+    <div class="logo"><span>Invest</span>Fácil</div>
+    <div class="header-buttons">
+      <a href="index.html" class="carteira-btn">↪ Voltar</a>
+      <img src="poze.jpg" alt="user" width="40" height="40" style="border-radius: 50%;">
+    </div>
+  </header>
+
+  <main>
+    <div class="simulador">
+      <h1>Simulador de Juros Compostos</h1>
+      <div class="linha"></div>
+
+      <div class="grid">
+        <div>
+          <label>Valor Inicial</label>
+          <div class="input-group">
+            <span>R$</span>
+            <input type="number" id="valorInicial" value="1000" />
+          </div>
+        </div>
+        <div>
+          <label>Taxa de Juros</label>
+          <div class="input-group">
+            <span>%</span>
+            <input type="number" id="taxaJuros" value="8" />
+            <select id="tipoTaxa">
+              <option value="anual">Anual</option>
+              <option value="mensal">Mensal</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+        <div>
+          <label>Período</label>
+          <div class="input-group">
+            <input type="number" id="periodo" value="10" />
+            <select id="tipoPeriodo">
+              <option value="anos">Anos</option>
+              <option value="meses">Meses</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label>Investimento Mensal</label>
+          <div class="input-group">
+            <span>R$</span>
+            <input type="number" id="aporteMensal" value="200" />
+          </div>
+        </div>
+      </div>
+
+      <div class="botoes">
+        <button class="limpar" onclick="limparCampos()">🧹 Limpar</button>
+        <button class="calcular" onclick="calcular()">💡 Calcular</button>
+      </div>
+
+      <div class="resultados">
+        <div class="resultado">
+          <h3>Valor Investido</h3>
+          <p id="valorInvestido">R$ 0,00</p>
+        </div>
+        <div class="resultado">
+          <h3>Total em Juros</h3>
+          <p class="verde" id="totalJuros">R$ 0,00</p>
+        </div>
+        <div class="resultado">
+          <h3>Valor Final</h3>
+          <p class="azul" id="valorFinal">R$ 0,00</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function calcular() {
+      const valorInicial = parseFloat(document.getElementById('valorInicial').value);
+      const taxa = parseFloat(document.getElementById('taxaJuros').value);
+      const tipoTaxa = document.getElementById('tipoTaxa').value;
+      const periodo = parseFloat(document.getElementById('periodo').value);
+      const tipoPeriodo = document.getElementById('tipoPeriodo').value;
+      const aporte = parseFloat(document.getElementById('aporteMensal').value);
+
+      if (isNaN(valorInicial) || isNaN(taxa) || isNaN(periodo)) return;
+
+      let meses = tipoPeriodo === 'anos' ? periodo * 12 : periodo;
+      let taxaMensal = tipoTaxa === 'anual' ? (taxa / 100) / 12 : (taxa / 100);
+
+      let montante = valorInicial * Math.pow(1 + taxaMensal, meses);
+      for (let i = 1; i <= meses; i++) {
+        montante += aporte * Math.pow(1 + taxaMensal, meses - i);
+      }
+
+      const valorInvestido = valorInicial + (aporte * meses);
+      const totalJuros = montante - valorInvestido;
+
+      document.getElementById('valorInvestido').innerText = formatar(valorInvestido);
+      document.getElementById('totalJuros').innerText = formatar(totalJuros);
+      document.getElementById('valorFinal').innerText = formatar(montante);
+    }
+
+    function formatar(valor) {
+      return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    }
+
+    function limparCampos() {
+      document.getElementById('valorInicial').value = '';
+      document.getElementById('taxaJuros').value = '';
+      document.getElementById('periodo').value = '';
+      document.getElementById('aporteMensal').value = '';
+      document.getElementById('valorInvestido').innerText = 'R$ 0,00';
+      document.getElementById('totalJuros').innerText = 'R$ 0,00';
+      document.getElementById('valorFinal').innerText = 'R$ 0,00';
+    }
+  </script>
+
+</body>
+</html>

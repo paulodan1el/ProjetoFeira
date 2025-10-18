@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InvestFacil - Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+</head>
+<body>
+
+    <header class="main-header">
+        <a href="#" class="logo">Invest<span>Fácil</span></a>
+        <div class="action-buttons">
+    <a href="#" class="btn-carteira">
+        <i class="fa-solid fa-wallet"></i>
+        <span>Carteira</span>
+    </a>
+
+    <button class="btn-theme" id="theme-toggle">
+        <i class="fas fa-moon"></i> <i class="fas fa-sun"></i>  </button>
+    <div class="user-profile">
+        <img src="images/poze.jpg" alt="Foto do Perfil" class="avatar-image">
+    </div>
+</div>
+    </header>
+
+    <div class="stock-ticker-bar">
+        <ul class="ticker-list">
+             <li class="ticker-item"><span class="ticker-symbol">PETR4</span><span class="ticker-price">R$38,40</span><span class="ticker-change positive">+1.25%</span></li><li class="ticker-item"><span class="ticker-symbol">VALE3</span><span class="ticker-price">R$61,50</span><span class="ticker-change negative">-0.80%</span></li><li class="ticker-item"><span class="ticker-symbol">ITUB4</span><span class="ticker-price">R$32,10</span><span class="ticker-change neutral">0.00%</span></li><li class="ticker-item"><span class="ticker-symbol">WEGE3</span><span class="ticker-price">R$31,76</span><span class="ticker-change negative">-0.21%</span></li><li class="ticker-item"><span class="ticker-symbol">USD</span><span class="ticker-price">R$5,50</span><span class="ticker-change positive">+0.08%</span></li><li class="ticker-item"><span class="ticker-symbol">IBOV</span><span class="ticker-price">141.982,22</span><span class="ticker-change positive">+0.14%</span></li><li class="ticker-item"><span class="ticker-symbol">MGLU3</span><span class="ticker-price">R$1,80</span><span class="ticker-change positive">+2.15%</span></li><li class="ticker-item"><span class="ticker-symbol">EUR</span><span class="ticker-price">R$5,92</span><span class="ticker-change neutral">0.00%</span></li><li class="ticker-item"><span class="ticker-symbol">PETR4</span><span class="ticker-price">R$38,40</span><span class="ticker-change positive">+1.25%</span></li><li class="ticker-item"><span class="ticker-symbol">VALE3</span><span class="ticker-price">R$61,50</span><span class="ticker-change negative">-0.80%</span></li><li class="ticker-item"><span class="ticker-symbol">ITUB4</span><span class="ticker-price">R$32,10</span><span class="ticker-change neutral">0.00%</span></li><li class="ticker-item"><span class="ticker-symbol">WEGE3</span><span class="ticker-price">R$31,76</span><span class="ticker-change negative">-0.21%</span></li><li class="ticker-item"><span class="ticker-symbol">USD</span><span class="ticker-price">R$5,50</span><span class="ticker-change positive">+0.08%</span></li><li class="ticker-item"><span class="ticker-symbol">IBOV</span><span class="ticker-price">141.982,22</span><span class="ticker-change positive">+0.14%</span></li><li class="ticker-item"><span class="ticker-symbol">MGLU3</span><span class="ticker-price">R$1,80</span><span class="ticker-change positive">+2.15%</span></li><li class="ticker-item"><span class="ticker-symbol">EUR</span><span class="ticker-price">R$5,92</span><span class="ticker-change neutral">0.00%</span></li>
+        </ul>
+    </div>
+
+    <main>
+        <section class="rankings-section">
+            <div class="rankings-header">
+                <h1>Ranking de Ações</h1>
+                <div class="filter-buttons">
+                </div>
+            </div>
+
+            <div class="rankings-container">
+                <div class="ranking-card">
+                    <div class="card-header"><i class="fas fa-dollar-sign icon"></i><h2>Maiores Dividend Yield</h2></div>
+                    <div class="card-body">
+                        <div class="ranking-item"><span class="rank">#1</span><img src="images/moar3.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">MOAR3</div><div class="name">MONTEIRO ARA...</div></div><span class="value">66,93%</span></div>
+                        <div class="ranking-item"><span class="rank">#2</span><img src="images/melk3.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">MELK3</div><div class="name">MELNICK</div></div><span class="value">30,34%</span></div>
+                        <div class="ranking-item"><span class="rank">#3</span><img src="images/alld3.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">ALLD3</div><div class="name">ALLIED</div></div><span class="value">24,05%</span></div>
+                        <div class="ranking-item"><span class="rank">#4</span><img src="images/recv3.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">RECV3</div><div class="name">PetroRecônca...</div></div><span class="value">18,57%</span></div>
+                        <div class="ranking-item"><span class="rank">#5</span><img src="images/petr4.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">PETR4</div><div class="name">Petrobrás</div></div><span class="value">17,27%</span></div>
+                    </div>
+                </div>
+
+                <div class="ranking-card">
+                    <div class="card-header"><i class="fas fa-landmark icon"></i><h2>Maiores Valor de Mercado</h2></div>
+                    <div class="card-body">
+                        <div class="ranking-item"><span class="rank">#1</span><img src="images/petr4.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">PETR4</div><div class="name">Petrobrás</div></div><span class="value">R$ 404,75 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                        <div class="ranking-item"><span class="rank">#2</span><img src="images/itub4.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">ITUB4</div><div class="name">Banco Itaú</div></div><span class="value">R$ 381,09 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                        <div class="ranking-item"><span class="rank">#3</span><img src="images/vale.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">VALE3</div><div class="name">Vale</div></div><span class="value">R$ 271,75 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                        <div class="ranking-item"><span class="rank">#4</span><img src="images/bpac11.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">BPAC11</div><div class="name">BANCO BTG PA...</div></div><span class="value">R$ 234,12 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                        <div class="ranking-item"><span class="rank">#5</span><img src="images/abev3.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">ABEV3</div><div class="name">Ambev</div></div><span class="value">R$ 186,14 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                    </div>
+                </div>
+
+                <div class="ranking-card">
+                    <div class="card-header"><i class="fas fa-chart-line icon"></i><h2>Maiores Receitas</h2></div>
+                    <div class="card-body">
+                        <div class="ranking-item"><span class="rank">#1</span><img src="images/petr4.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">PETR4</div><div class="name">Petrobrás</div></div><span class="value">R$ 493,12 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                        <div class="ranking-item"><span class="rank">#2</span><img src="images/itub4.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">ITUB4</div><div class="name">Banco Itaú</div></div><span class="value">R$ 369,42 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                        <div class="ranking-item"><span class="rank">#3</span><img src="images/bba3.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">BBAS3</div><div class="name">Banco do Bra...</div></div><span class="value">R$ 289,51 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                        <div class="ranking-item"><span class="rank">#4</span><img src="images/raiz4.png" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">RAIZ4</div><div class="name">Raízen</div></div><span class="value">R$ 251,73 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                        <div class="ranking-item"><span class="rank">#5</span><img src="images/bbdc3.jpg" alt="Logo" class="asset-logo"><div class="asset-info"><div class="ticker">BBDC3</div><div class="name">Banco Brades...</div></div><span class="value">R$ 234,41 B</span><i class="fas fa-chevron-right icon-arrow"></i></div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        <section class="ibovespa-section">
+    <div class="ibovespa-container">
+        <div class="chart-column">
+            <div class="chart-header">
+                <div class="title">Ibovespa</div>
+                <div>
+                    <span class="points">142.260,39 pontos</span>
+                    <span class="change">0,34% <i class="fas fa-caret-up"></i></span>
+                </div>
+            </div>
+            <div class="chart-details">
+                Fechamento anterior: 141.783,36 • Abertura: 142.260,39
+            </div>
+            <div class="time-filters" id="ibov-time-filters">
+    <button class="active" data-period="1D">1D</button>
+    <button data-period="7D">7D</button>
+    <button data-period="30D">30D</button>
+    <button data-period="6M">6M</button>
+    <button data-period="1A">1A</button>
+    <button data-period="5A">5A</button>
+</div>
+            <div class="chart-container">
+    <canvas id="ibovespaChart"></canvas>
+</div>
+            <div class="update-time">
+                <i class="fas fa-info-circle"></i> Atualizado em 25/10/2025 às 09:15h.
+            </div>
+        </div>
+
+        <div class="list-column">
+            <div class="list-header">Maiores Altas <i class="fas fa-caret-up"></i></div>
+            <div class="stock-list">
+                <div class="stock-item">
+                    <img src="images/EMBR3.jpg" alt="Logo" class="logo">
+                    <span class="ticker">EMBR3</span>
+                    <span class="percentage positive">+3,59%</span>
+                    <span class="price">R$ 81,63</span>
+                </div>
+                <div class="stock-item">
+                    <img src="images/raiz4.png" alt="Logo" class="logo">
+                    <span class="ticker">RAIZ4</span>
+                    <span class="percentage positive">+3,53%</span>
+                    <span class="price">R$ 0,88</span>
+                </div>
+                <div class="stock-item">
+                    <img src="images/BEEF3.png" alt="Logo" class="logo">
+                    <span class="ticker">BEEF3</span>
+                    <span class="percentage positive">+2,79%</span>
+                    <span class="price">R$ 6,64</span>
+                </div>
+                <div class="stock-item">
+                            <img src="images/MGLU.jpg" alt="Logo" class="logo">
+                            <span class="ticker">MGLU3</span>
+                            <span class="percentage positive">+2,21%</span>
+                            <span class="price">R$ 8,79</span>
+                        </div>
+                        <div class="stock-item">
+                            <img src="images/ASAI3.jpg" alt="Logo" class="logo">
+                            <span class="ticker">ASAI3</span>
+                            <span class="percentage positive">+2,11%</span>
+                            <span class="price">R$ 8,22</span>
+                        </div>
+                        <div class="stock-item">
+                            <img src="images/CPFE3.jpg" alt="Logo" class="logo">
+                            <span class="ticker">CPFE3</span>
+                            <span class="percentage positive">+2,09%</span>
+                            <span class="price">R$ 39,16</span>
+                        </div>
+            </div>
+        </div>
+
+        <div class="list-column">
+            <div class="list-header">Maiores Baixas <i class="fas fa-caret-down"></i></div>
+            <div class="stock-list">
+                 <div class="stock-item">
+                    <img src="images/MBRF3.jpg" alt="Logo" class="logo">
+                    <span class="ticker">MBRF3</span>
+                    <span class="percentage negative">-1,83%</span>
+                    <span class="price">R$ 15,60</span>
+                </div>
+                 <div class="stock-item">
+                    <img src="images/B3SA3.jpg" alt="Logo" class="logo">
+                    <span class="ticker">B3SA3</span>
+                    <span class="percentage negative">-1,02%</span>
+                    <span class="price">R$ 12,58</span>
+                </div>
+                 <div class="stock-item">
+                    <img src="images/RAIL3.jpg" alt="Logo" class="logo">
+                    <span class="ticker">RAIL3</span>
+                    <span class="percentage negative">-0,97%</span>
+                    <span class="price">R$ 15,32</span>
+                </div>
+                <div class="stock-item">
+                            <img src="images/recv3.jpg" alt="Logo" class="logo">
+                            <span class="ticker">RECV3</span>
+                            <span class="percentage negative">-0,90%</span>
+                            <span class="price">R$ 12,05</span>
+                        </div>
+                         <div class="stock-item">
+                            <img src="images/ELET3.jpg" alt="Logo" class="logo">
+                            <span class="ticker">ELET3</span>
+                            <span class="percentage negative">-0,71%</span>
+                            <span class="price">R$ 51,66</span>
+                        </div>
+                         <div class="stock-item">
+                            <img src="images/IGTI11.jpeg" alt="Logo" class="logo">
+                            <span class="ticker">IGTI11</span>
+                            <span class="percentage negative">-0,69%</span>
+                            <span class="price">R$ 22,89</span>
+                        </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="cotacoes-section">
+    <div class="cotacoes-container">
+
+        <div class="cotacao-card">
+            <h2>Moedas</h2>
+            <div class="cotacao-header">
+                <span>Moeda</span>
+                <span>Cotação</span>
+            </div>
+            <div class="cotacao-body">
+                <div class="cotacao-row">
+                    <span class="name">Dólar comercial</span>
+                    <span class="value">R$ 5,50</span>
+                </div>
+                <div class="cotacao-row">
+                    <span class="name">Yuan Chinês</span>
+                    <span class="value">R$ 0,77</span>
+                </div>
+                <div class="cotacao-row">
+                    <span class="name">Euro</span>
+                    <span class="value">R$ 6,38</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cotacao-card">
+            <h2>Índices</h2>
+            <div class="cotacao-header">
+                <span>Índices</span>
+                <span>%</span>
+            </div>
+            <div class="cotacao-body">
+                <div class="cotacao-row">
+                    <span class="name">Selic</span>
+                    <span class="value">15,00%</span>
+                </div>
+                <div class="cotacao-row">
+                    <span class="name">CDI</span>
+                    <span class="value">13,31%</span>
+                </div>
+                <div class="cotacao-row">
+                    <span class="name">IPCA</span>
+                    <span class="value">0,48%</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="cotacao-card">
+            <h2>Criptomoedas</h2>
+            <div class="cotacao-header crypto-header">
+                <div>Moeda</div>
+                <div>Variação</div>
+                <div>Cotação</div>
+            </div>
+            <div class="cotacao-body">
+                <div class="cotacao-row crypto-row">
+                    <div class="name"><i class="fab fa-bitcoin crypto-icon"></i> Bitcoin</div>
+                    <div class="variation negative">-3,50%</div>
+                    <div class="value">R$ 613,51 K</div>
+                </div>
+                <div class="cotacao-row crypto-row">
+                    <div class="name"><i class="fab fa-ethereum crypto-icon"></i> Ethereum</div>
+                    <div class="variation negative">-6,99%</div>
+                    <div class="value">R$ 21,86 K</div>
+                </div>
+                <div class="cotacao-row crypto-row">
+                    <div class="name"><i class="fas fa-circle-notch crypto-icon"></i> Solana</div>
+                    <div class="variation negative">-5,89%</div>
+                    <div class="value">R$ 1,08 K</div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section class="internacional-section">
+    <div class="internacional-header">
+        <img src="images/flageua.png" alt="Bandeira EUA" class="flag-icon">
+        <h2>Os Melhores do Mercado Internacional</h2>
+    </div>
+
+    <div class="internacional-container">
+        <div class="mercado-card">
+            <div class="mercado-card-header">
+                <i class="fas fa-chart-pie icon"></i>
+                <h3>Stocks</h3>
+            </div>
+            <div class="mercado-list">
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-1">#1</div>
+                    <img src="images/nvda.jpg" alt="NVDA" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">NVDA</div><div class="name">NVIDIA Corpo...</div></div>
+                    <span class="mercado-value">US$ 4,55 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-2">#2</div>
+                    <img src="images/msft.jpg" alt="MSFT" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">MSFT</div><div class="name">Microsoft Co...</div></div>
+                    <span class="mercado-value">US$ 3,80 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-3">#3</div>
+                    <img src="images/aapl.jpg" alt="AAPL" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">AAPL</div><div class="name">Apple Inc</div></div>
+                    <span class="mercado-value">US$ 3,66 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-4">#4</div>
+                    <img src="images/goog.jpg" alt="GOOG" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">GOOG</div><div class="name">Alphabet Inc...</div></div>
+                    <span class="mercado-value">US$ 2,88 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-5">#5</div>
+                    <img src="images/googl.jpg" alt="GOOGL" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">GOOGL</div><div class="name">Alphabet Inc...</div></div>
+                    <span class="mercado-value">US$ 2,87 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="mercado-card">
+            <div class="mercado-card-header">
+                <i class="fab fa-bitcoin icon"></i>
+                <h3>Criptomoedas</h3>
+            </div>
+            <div class="mercado-list">
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-1">#1</div>
+                    <img src="images/btc.png" alt="BTC" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">BTC</div><div class="name">Bitcoin</div></div>
+                    <span class="mercado-value">US$ 2,25 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-2">#2</div>
+                    <img src="images/et.png" alt="ETH" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">ETH</div><div class="name">Ethereum</div></div>
+                    <span class="mercado-value">US$ 495,46 B</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-3">#3</div>
+                    <img src="images/usdt.png" alt="USDT" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">USDT</div><div class="name">Tether</div></div>
+                    <span class="mercado-value">US$ 179,88 B</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-4">#4</div>
+                    <img src="images/bnb.webp" alt="BNB" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">BNB</div><div class="name">BNB</div></div>
+                    <span class="mercado-value">US$ 173,73 B</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-5">#5</div>
+                    <img src="images/xrp.png" alt="XRP" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">XRP</div><div class="name">XRP</div></div>
+                    <span class="mercado-value">US$ 151,33 B</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="mercado-card">
+            <div class="mercado-card-header">
+                <i class="fas fa-file-invoice-dollar icon"></i>
+                <h3>BDRs</h3>
+            </div>
+            <div class="mercado-list">
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-1">#1</div>
+                    <img src="images/nvda.jpg" alt="NVDA" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">NVDA</div><div class="name">NVIDIA Corpo...</div></div>
+                    <span class="mercado-value">US$ 4,55 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-2">#2</div>
+                    <img src="images/msft.jpg" alt="MSFT" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">MSFT</div><div class="name">Microsoft Co...</div></div>
+                    <span class="mercado-value">US$ 3,80 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-3">#3</div>
+                    <img src="images/aapl.jpg" alt="AAPL" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">AAPL</div><div class="name">Apple Inc</div></div>
+                    <span class="mercado-value">US$ 3,66 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-4">#4</div>
+                    <img src="images/goog.jpg" alt="GOOG" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">GOOG</div><div class="name">Alphabet Inc...</div></div>
+                    <span class="mercado-value">US$ 2,88 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+                <div class="mercado-list-item">
+                    <div class="mercado-rank rank-5">#5</div>
+                    <img src="images/googl.jpg" alt="GOOGL" class="mercado-logo">
+                    <div class="mercado-info"><div class="ticker">GOOGL</div><div class="name">Alphabet Inc...</div></div>
+                    <span class="mercado-value">US$ 2,87 T</span>
+                    <i class="fas fa-chevron-right mercado-arrow"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="news-section">
+    <h2>Confira as últimas novidades sobre dividendos</h2>
+    <div class="news-container">
+        <a href="#" class="news-card">
+            <img src="images/petrobras.webp" alt="Notícia sobre Petrobras" class="news-thumbnail">
+            <div class="news-content">
+                <span class="news-category">Mercado</span>
+                <p class="news-headline">Petrobras (PETR4) anuncia pagamento bilionário de dividendos; saiba a data e o valor por ação.</p>
+            </div>
+        </a>
+        <a href="#" class="news-card">
+            <img src="images/galpao.jpg" alt="Notícia sobre FIIs de Logística" class="news-thumbnail">
+            <div class="news-content">
+                <span class="news-category">FIIs - Fundos Imobiliários</span>
+                <p class="news-headline">FIIs de logística: Setor mostra resiliência e atrai investidores com dividendos estáveis.</p>
+            </div>
+        </a>
+        <a href="#" class="news-card">
+            <img src="images/financeiro.jpg" alt="Notícia sobre Varejo" class="news-thumbnail">
+            <div class="news-content">
+                <span class="news-category">Mercado</span>
+                <p class="news-headline">Ações do Varejo: Analistas revisam projeções para o fim do ano após dados da inflação.</p>
+            </div>
+        </a>
+        <a href="#" class="news-card">
+            <img src="images/moeda.jpg" alt="Notícia sobre Taxa Selic" class="news-thumbnail">
+            <div class="news-content">
+                <span class="news-category">Mercado</span>
+                <p class="news-headline">Impacto da Selic: Ações de quais setores podem se beneficiar com a nova taxa de juros?</p>
+            </div>
+        </a>
+        <a href="#" class="news-card">
+            <img src="images/shop.jpg" alt="Notícia sobre FIIs de Shoppings" class="news-thumbnail">
+            <div class="news-content">
+                <span class="news-category">FIIs - Fundos Imobiliários</span>
+                <p class="news-headline">Gigante do setor de shoppings anuncia nova emissão de cotas para aquisição de portfólio.</p>
+            </div>
+        </a>
+        <a href="#" class="news-card">
+            <img src="images/financeiro.jpg" alt="Notícia sobre BDRs" class="news-thumbnail">
+            <div class="news-content">
+                <span class="news-category">Mercado</span>
+                <p class="news-headline">BDRs de tecnologia: Gigantes como Apple e Microsoft seguem no radar dos investidores brasileiros.</p>
+            </div>
+    
+        </a>
+    </div>
+</section>
+<section class="portfolio-section">
+    <div class="portfolio-container">
+        <div class="portfolio-header">
+            <h2>Gerenciador de Carteiras</h2>
+            <a href="#" target="_blank" class="btn-create-portfolio">
+                <i class="fas fa-plus"></i> Criar Carteira
+            </a>
+            </div>
+
+        <div class="portfolio-body">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-header"><i class="fas fa-piggy-bank"></i> Total Investido</div>
+                    <div class="stat-value">R$ 250.000,00</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header"><i class="fas fa-chart-line"></i> Patrimônio Total</div>
+                    <div class="stat-value">R$ 625.000,00</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header"><i class="fas fa-gift"></i> Proventos</div>
+                    <div class="stat-value">R$ 125.276,76</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-header"><i class="fas fa-percent"></i> Rentabilidade</div>
+                    <div class="stat-rentabilidade">150% <i class="fas fa-arrow-up"></i></div>
+                </div>
+            </div>
+
+            <div class="chart-area">
+                <h3>Distribuição da Carteira</h3>
+                <div class="chart-content">
+                    <div class="chart-canvas-container">
+                        <canvas id="portfolioChart"></canvas>
+                    </div>
+                    <ul class="chart-legend">
+    <li>
+        <div class="legend-info">
+            <span class="legend-swatch" style="background-color: #2D5F73;"></span> Renda Fixa
+        </div>
+        <span class="legend-percentage">25%</span>
+    </li>
+    <li>
+        <div class="legend-info">
+            <span class="legend-swatch" style="background-color: #538F92;"></span> Ações
+        </div>
+        <span class="legend-percentage">25%</span>
+    </li>
+    <li>
+        <div class="legend-info">
+            <span class="legend-swatch" style="background-color: #F2A341;"></span> Fundos de Investimento
+        </div>
+        <span class="legend-percentage">25%</span>
+    </li>
+    <li>
+        <div class="legend-info">
+            <span class="legend-swatch" style="background-color: #4C6E5C;"></span> Fundos Imobiliários
+        </div>
+        <span class="legend-percentage">25%</span>
+    </li>
+</ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cotacoes-section">
+    <div class="cotacoes-container">
+
+        <a href="juroscompostos.html" class="cotacao-card cotacao-link-card">
+            <div class="cotacao-link-header">
+                <i class="fas fa-chart-line"></i>
+                <h2>Juros Compostos</h2>
+            </div>
+            <p>Veja o poder dos juros sobre juros e projete seu patrimônio ao longo do tempo.</p>
+        </a>
+
+        <a href="jurosimples.html" class="cotacao-card cotacao-link-card">
+            <div class="cotacao-link-header">
+                <i class="fas fa-calculator"></i>
+                <h2>Juros Simples</h2>
+            </div>
+            <p>Entenda o cálculo de juros simples para investimentos ou dívidas de curto prazo.</p>
+        </a>
+
+    </div>
+</section>
+    </main>
+
+
+<footer class="main-footer">
+    <div class="footer-container">
+        <div class="footer-column footer-about">
+            <a href="#" class="footer-logo">Invest<span>Fácil</span></a>
+            <p class="footer-slogan">Seu guia para investir com clareza e confiança no mercado financeiro.</p>
+        </div>
+
+        <div class="footer-column">
+            <h3>Navegação</h3>
+            <ul>
+                <li><a href="#">Ranking de Ativos</a></li>
+                <li><a href="#">Análise do Ibovespa</a></li>
+                <li><a href="#">Mercado Internacional</a></li>
+                <li><a href="#">Últimas Notícias</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Institucional</h3>
+            <ul>
+                <li><a href="#">Sobre Nós</a></li>
+                <li><a href="#">Contato</a></li>
+                <li><a href="#">Termos de Uso</a></li>
+                <li><a href="#">Política de Privacidade</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-column">
+            <h3>Siga-nos</h3>
+            <div class="social-links">
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2025 InvestFácil. Todos os direitos reservados. Feito para facilitar seus investimentos.</p>
+    </div>
+</footer>
+
+    <script src="main.js" defer></script>
+
+</body>
+</html>
+</html>

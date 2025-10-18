@@ -1,0 +1,275 @@
+/* ===================================================================
+   1. ESTILOS DA CALCULADORA (Paleta: Estilo "Investidor10" - Dark Fixo)
+   =================================================================== */
+:root {
+    /* Paleta Principal (Inspirada na Imagem) */
+    --color-primary: #00B8D9;      /* Ciano vibrante para destaques */
+    --color-text-light: #EAECEF;   /* Texto principal (quase branco) */
+    --color-text-muted: #8A94A6;  /* Texto secundário (cinza claro) */
+    --color-card-bg: #2A2E37;     /* Fundo dos cards/elementos (cinza escuro) */
+    --color-body-bg: #1E222D;     /* Fundo da página (muito escuro) */
+    --color-border: #3E4450;     /* Bordas gerais */
+    --color-border-light: #4A505C;/* Bordas internas/mais claras */
+    --color-green: #20C997;       /* Verde (mantido) */
+    --color-red: #F03E3E;         /* Vermelho (mantido) */
+
+    /* Outras variáveis */
+    --font-main: 'Inter', sans-serif; /* Fonte mantida */
+    --border-radius-s: 8px;
+    --border-radius-m: 12px;
+    --shadow: 0 4px 15px rgba(0,0,0,0.2); /* Sombra mais escura */
+    --transition: all 0.2s ease;
+}
+
+body {
+  font-family: var(--font-main);
+  background-color: var(--color-body-bg);
+  margin: 0;
+  padding: 0;
+  color: var(--color-text-light); /* Texto padrão é claro */
+}
+
+header {
+  background-color: var(--color-card-bg); /* Fundo escuro */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 40px;
+  box-shadow: var(--shadow);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 1.4rem;
+  color: var(--color-text-light); /* Texto claro */
+}
+.logo span {
+  color: var(--color-primary); /* Destaque ciano */
+}
+
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Estilo para botões no header (Voltar/Carteira) */
+.carteira-btn {
+  border: 1px solid var(--color-border);
+  padding: 8px 14px;
+  border-radius: var(--border-radius-s);
+  font-weight: 600;
+  background-color: var(--color-card-bg); /* Fundo escuro */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--color-text-light); /* Texto claro */
+  transition: var(--transition);
+}
+.carteira-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary); /* Muda cor no hover */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+/* Botão "Voltar" dentro do main */
+.btn-voltar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: var(--color-text-light);
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  padding: 8px 14px;
+  border-radius: var(--border-radius-s);
+  font-weight: 600;
+  margin-bottom: 20px;
+  width: fit-content;
+  transition: var(--transition);
+}
+.btn-voltar:hover {
+  background-color: var(--color-border-light);
+  border-color: var(--color-text-muted);
+}
+
+.simulador {
+  background-color: var(--color-card-bg); /* Fundo escuro */
+  width: 700px;
+  max-width: 100%;
+  padding: 30px;
+  border-radius: var(--border-radius-m);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--color-border);
+}
+
+.simulador h1 {
+  display: flex;
+  align-items: center;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: var(--color-text-light); /* Texto claro */
+}
+
+/* Ícones específicos */
+.simulador.juros-compostos h1::before { content: "📈"; margin-right: 10px; }
+.simulador.juros-simples h1::before { content: "💰"; margin-right: 10px; }
+
+.linha {
+  border-bottom: 1px solid var(--color-border-light); /* Borda mais clara */
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: var(--color-text-muted); /* Texto secundário */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-s);
+  background-color: var(--color-body-bg); /* Fundo mais escuro */
+}
+
+.input-group input, .input-group select {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 8px 10px;
+  background: transparent;
+  font-size: 1rem;
+  color: var(--color-text-light); /* Texto claro */
+}
+
+.input-group span { /* Para R$ e % */
+  color: var(--color-text-muted);
+  padding: 0 10px;
+  font-weight: 500;
+  background-color: var(--color-card-bg); /* Fundo cinza escuro */
+  border-right: 1px solid var(--color-border);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: var(--border-radius-s) 0 0 var(--border-radius-s);
+}
+.input-group span + input {
+    border-radius: 0 var(--border-radius-s) var(--border-radius-s) 0;
+}
+.input-group select {
+    background-color: var(--color-card-bg); /* Fundo cinza escuro */
+    border-left: 1px solid var(--color-border);
+    border-radius: 0 var(--border-radius-s) var(--border-radius-s) 0;
+    cursor: pointer;
+}
+/* Foco nos inputs */
+.input-group input:focus, .input-group select:focus {
+    box-shadow: 0 0 0 2px rgba(0, 184, 217, 0.3); /* Sombra ciano ao focar */
+}
+.input-group:focus-within {
+    border-color: var(--color-primary); /* Borda ciano no grupo */
+}
+
+
+.botoes {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+button { /* Estilo geral para botões DENTRO do simulador */
+  border: none;
+  cursor: pointer;
+  border-radius: var(--border-radius-s);
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: var(--transition);
+}
+
+.limpar {
+  background-color: var(--color-border-light); /* Cinza escuro */
+  color: var(--color-text-muted);
+}
+.limpar:hover {
+    filter: brightness(1.2); /* Clareia um pouco no hover */
+}
+
+.calcular {
+  background-color: var(--color-primary); /* Ciano */
+  color: var(--color-body-bg); /* Texto bem escuro para contraste */
+}
+.calcular:hover {
+    filter: brightness(0.85); /* Escurece um pouco no hover */
+}
+
+.resultados {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 25px;
+  padding-top: 20px;
+  border-top: 1px solid var(--color-border-light);
+}
+
+.resultado {
+  text-align: center;
+}
+
+/* CORREÇÃO DOS RESULTADOS */
+.resultado h3 {
+  font-weight: 600;
+  color: var(--color-text-muted); /* Texto secundário (cinza claro) */
+}
+.resultado p {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin-top: 4px;
+  color: var(--color-text-light); /* Texto principal (quase branco) */
+}
+
+/* CORREÇÃO DAS CORES ESPECÍFICAS NOS RESULTADOS */
+.resultado p.verde {
+  color: var(--color-green); /* Verde */
+}
+.resultado p.azul {
+  color: var(--color-primary); /* Ciano */
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+    .simulador {
+        width: 100%;
+        padding: 20px;
+    }
+    header {
+        padding: 10px 20px;
+    }
+    .resultados {
+        flex-direction: column;
+        gap: 15px;
+    }
+}
